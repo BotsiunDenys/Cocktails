@@ -1,0 +1,18 @@
+.card_singleItem {
+  padding: 10px 20px;
+  text-align: center;
+  &_img {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px black;
+    transition: 0.2s all;
+    &:hover {
+      box-shadow: 0 0 100px white;
+    }
+  }
+  &_name {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+}
