@@ -1,5 +1,5 @@
 .cocktails-page {
-  background-color: black;
+  position: relative;
   min-height: 100vh;
   color: white;
   background: url(../img/cocktailsBg.jpg) no-repeat center;
@@ -7,8 +7,19 @@
   &_header {
     text-align: center;
     font-size: 40px;
-    font-family: 'Lobster', 'Ubuntu';
+    font-family: 'Lobster', 'Ubuntu', sans-serif;
     padding: 5px 0;
+  }
+  &_goHomeBtn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: white;
+    font-size: 30px;
+    transition: 0.15s all;
+  }
+  &_goHomeBtn:hover {
+    color: rgba(255, 255, 255, 0.521);
   }
   &_main {
     display: flex;
@@ -52,12 +63,12 @@
     background-color: #747474;
     border-color: rgba(255, 255, 255, 0.623);
   }
-  &_randomTitle {
+  &_Title {
     font-size: 30px;
     text-align: center;
     margin: 30px 0 10px 0;
   }
-  &_randomItems {
+  &_Items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;

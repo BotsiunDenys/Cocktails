@@ -1,0 +1,58 @@
+.infoCocktail {
+  position: relative;
+  min-height: 100vh;
+  color: white;
+  background: url(../img/singleDrinkInfo.jpg) no-repeat center;
+  background-size: cover;
+  &_header {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  &_goBackBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+    background-color: #444444;
+    border: 1px solid white;
+    transition: 0.15s all;
+  }
+  &_goBackBtn:hover {
+    color: rgba(255, 255, 255, 0.623);
+    background-color: #747474;
+    border-color: rgba(255, 255, 255, 0.623);
+  }
+  &_headerTitle {
+    font-size: 30px;
+    font-family: "Lobster", "Ubuntu", sans-serif;
+  }
+  &_main {
+    display: flex;
+    margin: 30px 300px;
+  }
+  &_img {
+    width: 500px;
+    height: 500px;
+    border-radius: 30px;
+    cursor: auto;
+  }
+  &_receipt {
+    margin: 0 50px;
+  }
+  &_title {
+    margin-bottom: 10px;
+  }
+  &_info {
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  &_instruction {
+    font-size: 18px;
+  }
+}

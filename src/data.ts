@@ -36,7 +36,7 @@ interface Drink {
   strMeasure15: string | null;
 }
 
-export const cocktails: Drink[] = [
+export const COCKTAILS: Drink[] = [
   {
     idDrink: "1",
     strDrink: "Margarita",
@@ -351,16 +351,16 @@ export const cocktails: Drink[] = [
   },
   {
     idDrink: "9",
-    strDrink: "Margarita",
+    strDrink: "Cosmopolitan",
     strCategory: "Ordinary Drink",
     strInstructions:
-      "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+      "Add all ingredients into cocktail shaker filled with ice. Shake well and double strain into large cocktail glass. Garnish with lime wheel.",
     strDrinkThumb:
-      "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-    strIngredient1: "Tequila",
-    strIngredient2: "Triple sec",
-    strIngredient3: "Lime juice",
-    strIngredient4: "Salt",
+      "https://www.thecocktaildb.com/images/media/drink/kpsajh1504368362.jpg",
+    strIngredient1: "Vodka",
+    strIngredient2: "Lime juice",
+    strIngredient3: "Cointreau",
+    strIngredient4: "Cranberry juice",
     strIngredient5: null,
     strIngredient6: null,
     strIngredient7: null,
@@ -372,10 +372,10 @@ export const cocktails: Drink[] = [
     strIngredient13: null,
     strIngredient14: null,
     strIngredient15: null,
-    strMeasure1: "1 1/2 oz ",
-    strMeasure2: "1/2 oz ",
-    strMeasure3: "1 oz ",
-    strMeasure4: "Coarse ",
+    strMeasure1: "1 1/4 oz ",
+    strMeasure2: "1/4 oz ",
+    strMeasure3: "1/4 oz ",
+    strMeasure4: "1/4 cup ",
     strMeasure5: null,
     strMeasure6: null,
     strMeasure7: null,
@@ -390,14 +390,14 @@ export const cocktails: Drink[] = [
   },
   {
     idDrink: "10",
-    strDrink: "Margarita",
+    strDrink: "Blue Margarita",
     strCategory: "Ordinary Drink",
     strInstructions:
-      "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+      "Rub rim of cocktail glass with lime juice. Dip rim in coarse salt. Shake tequila, blue curacao, and lime juice with ice, strain into the salt-rimmed glass, and serve.",
     strDrinkThumb:
-      "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+      "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
     strIngredient1: "Tequila",
-    strIngredient2: "Triple sec",
+    strIngredient2: "Blue Curacao",
     strIngredient3: "Lime juice",
     strIngredient4: "Salt",
     strIngredient5: null,
@@ -412,7 +412,7 @@ export const cocktails: Drink[] = [
     strIngredient14: null,
     strIngredient15: null,
     strMeasure1: "1 1/2 oz ",
-    strMeasure2: "1/2 oz ",
+    strMeasure2: "1 oz ",
     strMeasure3: "1 oz ",
     strMeasure4: "Coarse ",
     strMeasure5: null,
