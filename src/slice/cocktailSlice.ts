@@ -18,12 +18,48 @@ const initialCocktailsState: CocktailsState = {
   error: "",
 };
 
-export const getCocktail = createAsyncThunk<Cocktail[], string>(
-  "cocktails/getCocktails",
+export const getCocktailByName = createAsyncThunk<Cocktail[], string>(
+  "cocktails/getCocktailsByName",
   async (name) => {
     const cocktails = await axios.get<getCocktailResponse>(
       `https://thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
     );
+    return cocktails.data.drinks;
+  }
+);
+
+export const getCocktailByFirstLetter = createAsyncThunk<Cocktail[], string>(
+  "cocktails/getCocktailsByFirstLetter",
+  async (name) => {
+    const cocktails = await axios.get<getCocktailResponse>(
+      `https://thecocktaildb.com/api/json/v1/1/search.php?f=${name}`
+    );
+    return cocktails.data.drinks;
+  }
+);
+
+export const getOneRandom = createAsyncThunk<Cocktail[]>(
+  "cocktails/getOneRandom",
+  async () => {
+    const cocktails = await axios.get<getCocktailResponse>(
+      `https://thecocktaildb.com/api/json/v1/1/random.php`
+    );
+    return cocktails.data.drinks;
+  }
+);
+
+export const getTenRandom = createAsyncThunk<Cocktail[]>(
+  "cocktails/getTenRandom",
+  async () => {
+    const options = {
+      method: "GET",
+      url: "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
+      headers: {
+        "X-RapidAPI-Key": "mykey",
+        "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
+      },
+    };
+    const cocktails = await axios.request<getCocktailResponse>(options);
     return cocktails.data.drinks;
   }
 );
@@ -33,17 +69,68 @@ const cocktailsSlice = createSlice({
   initialState: initialCocktailsState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCocktail.pending, (state) => {
+    builder.addCase(getCocktailByName.pending, (state) => {
       state.loading = true;
       state.error = "";
       state.cocktails = [];
     });
-    builder.addCase(getCocktail.fulfilled, (state, action) => {
+    builder.addCase(getCocktailByName.fulfilled, (state, action) => {
       state.loading = false;
       state.error = "";
       state.cocktails = action.payload;
     });
-    builder.addCase(getCocktail.rejected, (state, action) => {
+    builder.addCase(getCocktailByName.rejected, (state, action) => {
+      state.loading = false;
+      state.cocktails = [];
+      if (action.error.message) {
+        state.error = action.error.message;
+      }
+    });
+    builder.addCase(getCocktailByFirstLetter.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+      state.cocktails = [];
+    });
+    builder.addCase(getCocktailByFirstLetter.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = "";
+      state.cocktails = action.payload;
+    });
+    builder.addCase(getCocktailByFirstLetter.rejected, (state, action) => {
+      state.loading = false;
+      state.cocktails = [];
+      if (action.error.message) {
+        state.error = action.error.message;
+      }
+    });
+    builder.addCase(getOneRandom.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+      state.cocktails = [];
+    });
+    builder.addCase(getOneRandom.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = "";
+      state.cocktails = action.payload;
+    });
+    builder.addCase(getOneRandom.rejected, (state, action) => {
+      state.loading = false;
+      state.cocktails = [];
+      if (action.error.message) {
+        state.error = action.error.message;
+      }
+    });
+    builder.addCase(getTenRandom.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+      state.cocktails = [];
+    });
+    builder.addCase(getTenRandom.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = "";
+      state.cocktails = action.payload;
+    });
+    builder.addCase(getTenRandom.rejected, (state, action) => {
       state.loading = false;
       state.cocktails = [];
       if (action.error.message) {
