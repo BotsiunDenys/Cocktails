@@ -3,8 +3,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/exports";
 import { TypedUseSelectorHook } from "react-redux/es/types";
 import cocktailSlice from "../slice/cocktailSlice";
+import favouriteDrinksSlice from "../slice/favouriteDrinksSlice";
+import favouriteVisibilitySlice from "../slice/favouriteVisibilitySlice";
 const store = configureStore({
-  reducer: { cocktails: cocktailSlice },
+  reducer: {
+    cocktails: cocktailSlice,
+    favouriteDrinks: favouriteDrinksSlice,
+    favouriteVisibility: favouriteVisibilitySlice,
+  },
 });
 
 export default store;

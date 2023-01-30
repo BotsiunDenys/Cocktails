@@ -26,11 +26,11 @@ const Cocktails = () => {
   return (
     <div className="cocktails-page">
       <Search />
-      {cocktails.length !== 0 && (
+      {cocktails?.length !== 0 && (
         <>
           <p className="cocktails-page_Title">Cocktails matching your search</p>
           <section className="cocktails-page_Items">
-            {cocktails.map((cocktail) => (
+            {cocktails?.map((cocktail) => (
               <CardCocktail
                 key={cocktail.idDrink}
                 id={cocktail.idDrink}

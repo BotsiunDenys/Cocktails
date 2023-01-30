@@ -55,7 +55,7 @@ export const getTenRandom = createAsyncThunk<Cocktail[]>(
       method: "GET",
       url: "https://the-cocktail-db.p.rapidapi.com/randomselection.php",
       headers: {
-        "X-RapidAPI-Key": "mykey",
+        "X-RapidAPI-Key": "f2169d0fa9msh40636dae531b068p132074jsn249ea20ff57d",
         "X-RapidAPI-Host": "the-cocktail-db.p.rapidapi.com",
       },
     };

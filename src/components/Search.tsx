@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineStar } from "react-icons/ai";
 import { FaRandom } from "react-icons/fa";
 import { GiCardRandom } from "react-icons/gi";
 import { useAppDispatch } from "../store/store";
@@ -10,6 +10,8 @@ import {
   getOneRandom,
   getTenRandom,
 } from "../slice/cocktailSlice";
+import { toggleOverlay } from "../slice/favouriteVisibilitySlice";
+import FavouriteDrinks from "./FavouriteDrinks";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useState("name");
@@ -17,9 +19,17 @@ const Search = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <Link to="/" className="cocktails-page_goHomeBtn">
-        <AiOutlineHome />
-      </Link>
+      <div className="cocktails-page_headerSection">
+        <Link to="/" className="cocktails-page_goHomeBtn">
+          <AiOutlineHome />
+        </Link>
+        <span
+          className="showFavouriteOverlay"
+          onClick={() => dispatch(toggleOverlay())}
+        >
+          <AiOutlineStar />
+        </span>
+      </div>
       <header className="cocktails-page_header">Drink passion</header>
       <main className="cocktails-page_main">
         <div className="cocktails-page_params">
@@ -86,6 +96,7 @@ const Search = () => {
           </button>
         </div>
       </main>
+      <FavouriteDrinks />
     </>
   );
 };

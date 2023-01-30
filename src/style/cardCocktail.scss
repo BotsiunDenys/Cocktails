@@ -1,6 +1,7 @@
 .card_singleItem {
   padding: 10px 20px;
   text-align: center;
+  animation: item-appearing 0.4s linear;
   &_img {
     height: 150px;
     width: 150px;
@@ -14,5 +15,15 @@
   &_name {
     font-size: 20px;
     margin-top: 10px;
+  }
+}
+
+@keyframes item-appearing {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

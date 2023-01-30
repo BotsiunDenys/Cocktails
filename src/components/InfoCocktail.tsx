@@ -1,11 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { useAppSelector } from "../store/store";
+import { BiDrink } from "react-icons/bi";
+import { AiOutlineStar } from "react-icons/ai";
+import { useAppSelector, useAppDispatch } from "../store/store";
+import { toggleOverlay } from "../slice/favouriteVisibilitySlice";
+import { addFavourite } from "../slice/favouriteDrinksSlice";
+import FavouriteDrinks from "./FavouriteDrinks";
 import "../style/infoCocktail.scss";
 
 const InfoCocktail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const cocktails = useAppSelector((state) => state.cocktails.cocktails);
   const cocktail = cocktails.find((item) => item.idDrink === id);
   const fullIngredientsList: Array<string> = [];
@@ -25,12 +30,18 @@ const InfoCocktail = () => {
 
   return (
     <div className="infoCocktail">
-      <button onClick={() => navigate(-1)} className="infoCocktail_goBackBtn">
-        <AiOutlineArrowLeft />
-      </button>
-      <header className="infoCocktail_header">
-        <p className="infoCocktail_headerTitle">{cocktail?.strDrink}</p>
-      </header>
+      <div className="infoCocktail_headerSection">
+        <span onClick={() => navigate(-1)} className="infoCocktail_goBackBtn">
+          <BiDrink />
+        </span>
+        <span
+          className="showFavouriteOverlay"
+          onClick={() => dispatch(toggleOverlay())}
+        >
+          <AiOutlineStar />
+        </span>
+      </div>
+      <header className="infoCocktail_header">{cocktail?.strDrink}</header>
       <main className="infoCocktail_main">
         <input
           type="image"
@@ -65,8 +76,19 @@ const InfoCocktail = () => {
           <p className="infoCocktail_instruction">
             {cocktail?.strInstructions}
           </p>
+          <button
+            className="infoCocktail_addToFavourite"
+            onClick={() => {
+              if (cocktail) {
+                dispatch(addFavourite(cocktail));
+              }
+            }}
+          >
+            <AiOutlineStar />
+          </button>
         </div>
       </main>
+      <FavouriteDrinks />
     </div>
   );
 };

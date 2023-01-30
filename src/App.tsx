@@ -1,18 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Cocktails from "./components/Cocktails";
-import InfoCocktail from "./components/InfoCocktail";
+import { lazy, Suspense } from "react";
 import "./App.scss";
+
+const Home = lazy(() => import("./components/Home"));
+const Cocktails = lazy(() => import("./components/Cocktails"));
+const InfoCocktail = lazy(() => import("./components/InfoCocktail"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="cocktails" element={<Cocktails />}/>
-        <Route path="cocktails/:id" element={<InfoCocktail />} />
-      </Routes>
-    </BrowserRouter>
+    <Suspense fallback={<h1 className="pageLoading">Loading...</h1>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="cocktails" element={<Cocktails />} />
+          <Route path="cocktails/:id" element={<InfoCocktail />} />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
