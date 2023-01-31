@@ -21,37 +21,77 @@
   height: 100%;
   transform: translateX(100%);
   transition: 0.5s all ease;
+  overflow-y: scroll;
+  z-index: 100;
   &_header {
     position: relative;
-    margin: 20px;
+    margin: 10px;
     font-size: 24px;
   }
   &_closeSection {
     position: absolute;
     cursor: pointer;
     transition: 0.3s all;
-  }
-  &_closeSection:hover {
-    color: rgba(255, 255, 255, 0.514);
+    &:hover {
+      color: rgba(255, 255, 255, 0.514);
+    }
   }
   &_headerText {
     text-align: center;
   }
-  &_clearFavourites{
-    justify-self: flex-end;
+  &_clearFavourites {
+    cursor: pointer;
+    text-align: center;
+    width: 95%;
+    margin: auto 2.5% 10px 2.5%;
+    font-size: 18px;
+    padding: 5px;
+    background-color: #5a5559;
+    color: white;
+    border-radius: 5px;
+    border-color: white;
+    transition: 0.3s all;
+    &:hover {
+      background-color: #303030;
+      color: rgb(167, 167, 167);
+      border-color: rgb(167, 167, 167);
+    }
   }
   &_singleDrink {
     display: flex;
     padding: 10px;
+    margin: 5px 10px;
+    border: 1px solid white;
+    border-radius: 10px;
     &_img {
-      width: 50px;
-      height: 50px;
+      width: 75px;
+      height: 75px;
       border-radius: 5px;
     }
     &_main {
       display: flex;
       flex-direction: column;
-      margin-left: 10px;
+      margin-left: 15px;
+    }
+    &_title {
+      font-size: 18px;
+    }
+    &_remove {
+      cursor: pointer;
+      font-size: 14px;
+      width: 80px;
+      margin-top: 30px;
+      padding: 3px;
+      background-color: #5a5559;
+      color: white;
+      border-radius: 5px;
+      border-color: white;
+      transition: 0.3s all;
+      &:hover {
+        background-color: #303030;
+        color: rgb(167, 167, 167);
+        border-color: rgb(167, 167, 167);
+      }
     }
   }
 }
@@ -60,5 +100,5 @@
   transform: translateX(0%);
 }
 .overlay-show {
-  z-index: 100;
+  z-index: 10;
 }

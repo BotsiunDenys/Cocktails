@@ -24,7 +24,7 @@ const Search = () => {
           <AiOutlineHome />
         </Link>
         <span
-          className="showFavouriteOverlay"
+          className="cocktails-page_showFavouriteOverlay"
           onClick={() => dispatch(toggleOverlay())}
         >
           <AiOutlineStar />

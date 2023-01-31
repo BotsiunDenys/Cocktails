@@ -1,9 +1,15 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { useAppSelector, useAppDispatch } from "../store/store";
 import { toggleOverlay } from "../slice/favouriteVisibilitySlice";
+import {
+  removeFavourite,
+  clearFavourites,
+} from "../slice/favouriteDrinksSlice";
 import "../style/favouriteDrinks.scss";
+import { useNavigate } from "react-router-dom";
 
 const FavouriteDrinks = () => {
+  const navigate = useNavigate();
   const visibility = useAppSelector(
     (state) => state.favouriteVisibility.visibility
   );
@@ -39,19 +45,34 @@ const FavouriteDrinks = () => {
                 src={drink.strDrinkThumb}
                 alt={`${drink.strDrink} img`}
                 className="favouriteSection_singleDrink_img"
+                onClick={() => {
+                  dispatch(toggleOverlay());
+                  navigate(`/cocktails/${drink.idDrink}`);
+                }}
               />
               <div className="favouriteSection_singleDrink_main">
                 <p className="favouriteSection_singleDrink_title">
                   {drink.strDrink}
                 </p>
-                <button className="favouriteSection_singleDrink_remove">
+                <button
+                  className="favouriteSection_singleDrink_remove"
+                  onClick={() => dispatch(removeFavourite(drink.idDrink))}
+                >
                   Remove
                 </button>
               </div>
             </div>
           ))}
         </section>
-        <button className="favouriteSection_clearFavourites">Clear all</button>
+        <button
+          className="favouriteSection_clearFavourites"
+          onClick={() => {
+            dispatch(clearFavourites());
+            dispatch(toggleOverlay());
+          }}
+        >
+          Clear all
+        </button>
       </aside>
     </div>
   );

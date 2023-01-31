@@ -19,9 +19,21 @@
     color: white;
     font-size: 30px;
     transition: 0.15s all;
+    &:hover {
+      color: rgba(255, 255, 255, 0.521);
+    }
   }
-  &_goHomeBtn:hover {
-    color: rgba(255, 255, 255, 0.521);
+  &_showFavouriteOverlay {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+    transition: 0.15s all;
+    &:hover {
+      color: rgba(255, 255, 255, 0.623);
+    }
   }
   &_main {
     display: flex;
@@ -59,11 +71,11 @@
     background-color: #444444;
     border: 1px solid white;
     transition: 0.15s all;
-  }
-  &_searchBtn:hover {
-    color: rgba(255, 255, 255, 0.623);
-    background-color: #747474;
-    border-color: rgba(255, 255, 255, 0.623);
+    &:hover {
+      color: rgba(255, 255, 255, 0.623);
+      background-color: #747474;
+      border-color: rgba(255, 255, 255, 0.623);
+    }
   }
   &_Title {
     font-size: 30px;
@@ -139,18 +151,5 @@
   &_searchRandom:hover &_searchRandomText {
     visibility: visible;
     opacity: 1;
-  }
-}
-
-.showFavouriteOverlay {
-  display: inline-block;
-  border-radius: 5px;
-  font-size: 30px;
-  font-weight: bolder;
-  cursor: pointer;
-  color: white;
-  transition: 0.15s all;
-  &:hover {
-    color: rgba(255, 255, 255, 0.623);
   }
 }

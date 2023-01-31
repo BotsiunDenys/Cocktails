@@ -22,9 +22,21 @@
     cursor: pointer;
     color: white;
     transition: 0.15s all;
+    &:hover {
+      color: rgba(255, 255, 255, 0.623);
+    }
   }
-  &_goBackBtn:hover {
-    color: rgba(255, 255, 255, 0.623);
+  &_showFavouriteOverlay {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: white;
+    transition: 0.15s all;
+    &:hover {
+      color: rgba(255, 255, 255, 0.623);
+    }
   }
   &_main {
     display: flex;

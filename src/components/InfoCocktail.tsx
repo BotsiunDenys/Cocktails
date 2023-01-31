@@ -13,6 +13,10 @@ const InfoCocktail = () => {
   const dispatch = useAppDispatch();
   const cocktails = useAppSelector((state) => state.cocktails.cocktails);
   const cocktail = cocktails.find((item) => item.idDrink === id);
+  const favouriteCocktail = useAppSelector(
+    (state) => state.favouriteDrinks.favouriteDrinks
+  );
+  const isFavourite = favouriteCocktail?.find((item) => item.idDrink === id);
   const fullIngredientsList: Array<string> = [];
   const fullMeasureList: Array<string> = [];
   if (cocktail) {
@@ -35,7 +39,7 @@ const InfoCocktail = () => {
           <BiDrink />
         </span>
         <span
-          className="showFavouriteOverlay"
+          className="infoCocktail_showFavouriteOverlay"
           onClick={() => dispatch(toggleOverlay())}
         >
           <AiOutlineStar />
@@ -80,7 +84,10 @@ const InfoCocktail = () => {
             className="infoCocktail_addToFavourite"
             onClick={() => {
               if (cocktail) {
-                dispatch(addFavourite(cocktail));
+                if (!isFavourite) {
+                  dispatch(addFavourite(cocktail));
+                }
+                dispatch(toggleOverlay());
               }
             }}
           >
