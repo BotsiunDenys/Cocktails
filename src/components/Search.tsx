@@ -10,6 +10,9 @@ import {
   getOneRandom,
   getTenRandom,
 } from "../slice/cocktailSlice";
+import { clearCocktailsState } from "../slice/cocktailSlice";
+import { clearIngredientsCocktailsState } from "../slice/getCocktailsByIngredientSlice";
+import { getCocktailsByIngredient } from "../slice/getCocktailsByIngredientSlice";
 import { toggleOverlay } from "../slice/favouriteVisibilitySlice";
 import FavouriteDrinks from "./FavouriteDrinks";
 
@@ -44,6 +47,7 @@ const Search = () => {
           >
             <option value="name">Name</option>
             <option value="first letter">First letter</option>
+            <option value="ingredient">Ingredient</option>
           </select>
         </div>
         <form
@@ -53,10 +57,15 @@ const Search = () => {
             if (searchInput.current) {
               if (searchInput.current.value) {
                 if (searchParams === "name") {
+                  dispatch(clearIngredientsCocktailsState());
                   dispatch(getCocktailByName(searchInput.current.value));
-                } else {
+                } else if (searchParams === "first letter") {
+                  dispatch(clearIngredientsCocktailsState());
                   const searchValue = searchInput.current.value[0];
                   dispatch(getCocktailByFirstLetter(searchValue));
+                } else {
+                  dispatch(clearCocktailsState());
+                  dispatch(getCocktailsByIngredient(searchInput.current.value));
                 }
                 searchInput.current.value = "";
               }

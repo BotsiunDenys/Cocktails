@@ -12,7 +12,7 @@ const InfoCocktail = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cocktails = useAppSelector((state) => state.cocktails.cocktails);
-  const cocktail = cocktails.find((item) => item.idDrink === id);
+  const cocktail = cocktails?.find((item) => item.idDrink === id);
   const favouriteCocktail = useAppSelector(
     (state) => state.favouriteDrinks.favouriteDrinks
   );

@@ -51,3 +51,9 @@ export interface Cocktail {
   strCreativeCommonsConfirmed: string | null;
   dateModified: string | null;
 }
+
+export interface SingleCocktail {
+  strDrink: string;
+  strDrinkThumb: string;
+  idDrink: string;
+}

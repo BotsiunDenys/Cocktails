@@ -5,6 +5,9 @@ import Search from "./Search";
 
 const Cocktails = () => {
   const cocktails = useAppSelector((state) => state.cocktails.cocktails);
+  const cocktailsByIngredient = useAppSelector(
+    (state) => state.searchedCocktailsByIngredient.drinks
+  );
   const loading = useAppSelector((state) => state.cocktails.loading);
   const error = useAppSelector((state) => state.cocktails.error);
   if (loading) {
@@ -20,6 +23,30 @@ const Cocktails = () => {
       <div className="cocktails-page">
         <Search />
         <h1 className="cocktails-page_error">{error}</h1>
+      </div>
+    );
+  }
+  if (cocktailsByIngredient?.length !== 0) {
+    return (
+      <div className="cocktails-page">
+        <Search />
+        {cocktailsByIngredient?.length !== 0 && (
+          <>
+            <p className="cocktails-page_Title">
+              Cocktails matching your search
+            </p>
+            <section className="cocktails-page_Items">
+              {cocktailsByIngredient?.map((cocktail) => (
+                <CardCocktail
+                  key={cocktail.idDrink}
+                  id={cocktail.idDrink}
+                  photo={cocktail.strDrinkThumb}
+                  name={cocktail.strDrink}
+                />
+              ))}
+            </section>
+          </>
+        )}
       </div>
     );
   }

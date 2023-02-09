@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useAppSelector, useAppDispatch } from "../store/store";
+import { getOneCocktail } from "../slice/cocktailSlice";
 import "../style/cardCocktail.scss";
 interface Props {
   name: string;
@@ -8,8 +10,19 @@ interface Props {
 
 const CardCocktail = ({ photo, name, id }: Props) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const cocktails = useAppSelector((state) => state.cocktails.cocktails);
+  const cocktail = cocktails.find((item) => item.idDrink === id);
   return (
-    <div className="card_singleItem" onClick={() => navigate(`${id}`)}>
+    <div
+      className="card_singleItem"
+      onClick={() => {
+        if (!cocktail) {
+          dispatch(getOneCocktail(id));
+        }
+        navigate(`${id}`);
+      }}
+    >
       <input
         type="image"
         src={photo}

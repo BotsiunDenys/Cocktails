@@ -16,6 +16,7 @@ import storage from "redux-persist/lib/storage";
 import cocktailSlice from "../slice/cocktailSlice";
 import favouriteDrinksSlice from "../slice/favouriteDrinksSlice";
 import favouriteVisibilitySlice from "../slice/favouriteVisibilitySlice";
+import searchedCocktailsByIngredientSlice from "../slice/getCocktailsByIngredientSlice";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   cocktails: cocktailSlice,
   favouriteDrinks: favouriteDrinksSlice,
   favouriteVisibility: favouriteVisibilitySlice,
+  searchedCocktailsByIngredient: searchedCocktailsByIngredientSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

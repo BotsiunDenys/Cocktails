@@ -11,7 +11,6 @@ interface CocktailsState {
 interface getCocktailResponse {
   drinks: Cocktail[];
 }
-
 const initialCocktailsState: CocktailsState = {
   cocktails: [],
   loading: false,
@@ -34,6 +33,16 @@ export const getCocktailByFirstLetter = createAsyncThunk<Cocktail[], string>(
     const cocktails = await axios.get<getCocktailResponse>(
       `https://thecocktaildb.com/api/json/v1/1/search.php?f=${name}`
     );
+    return cocktails.data.drinks;
+  }
+);
+
+export const getOneCocktail = createAsyncThunk<Cocktail[], string | undefined>(
+  "cocktails/getOneCocktail",
+  async (id) => {
+    const cocktails = await axios.get<getCocktailResponse>(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    );    
     return cocktails.data.drinks;
   }
 );
@@ -67,7 +76,13 @@ export const getTenRandom = createAsyncThunk<Cocktail[]>(
 const cocktailsSlice = createSlice({
   name: "cocktails",
   initialState: initialCocktailsState,
-  reducers: {},
+  reducers: {
+    clearCocktailsState: (state) => {
+      state.cocktails = [];
+      state.error = "";
+      state.loading = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCocktailByName.pending, (state) => {
       state.loading = true;
@@ -137,7 +152,25 @@ const cocktailsSlice = createSlice({
         state.error = action.error.message;
       }
     });
+    builder.addCase(getOneCocktail.pending, (state) => {
+      state.cocktails = [];
+      state.loading = true;
+      state.error = "";
+    });
+    builder.addCase(getOneCocktail.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = "";
+      state.cocktails = action.payload;
+    });
+    builder.addCase(getOneCocktail.rejected, (state, action) => {
+      state.loading = false;
+      state.cocktails = [];
+      if (action.error.message) {
+        state.error = action.error.message;
+      }
+    });
   },
 });
 
 export default cocktailsSlice.reducer;
+export const { clearCocktailsState } = cocktailsSlice.actions;
