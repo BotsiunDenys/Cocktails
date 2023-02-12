@@ -2,18 +2,25 @@
   min-height: 100vh;
   color: white;
   background-color: #2e2e39;
+
   &_header {
     background-color: #686a77;
     text-align: center;
     font-size: 40px;
-    font-family: "Lobster", "Ubuntu", sans-serif;
+    font-family: Lobster, Ubuntu, sans-serif;
     padding: 50px;
+
+    @media (max-width: 1000px) {
+      font-size: 30px;
+    }
   }
+
   &_headerSection {
     display: flex;
     justify-content: space-between;
     padding: 10px 30px;
   }
+
   &_goBackBtn {
     display: inline-block;
     border-radius: 5px;
@@ -22,10 +29,12 @@
     cursor: pointer;
     color: white;
     transition: 0.15s all;
+
     &:hover {
-      color: rgba(255, 255, 255, 0.623);
+      color: rgb(255 255 255 / 62.3%);
     }
   }
+
   &_showFavouriteOverlay {
     display: inline-block;
     border-radius: 5px;
@@ -34,48 +43,98 @@
     cursor: pointer;
     color: white;
     transition: 0.15s all;
+
     &:hover {
-      color: rgba(255, 255, 255, 0.623);
+      color: rgb(255 255 255 / 62.3%);
     }
   }
+
   &_main {
     display: flex;
+    justify-content: center;
     animation: item-appearing 0.4s linear;
     margin: 75px 300px;
+
+    @media (max-width: 1400px) {
+      margin: 75px 100px 0;
+    }
+
+    @media (max-width: 1000px) {
+      margin: 50px;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+      text-align: center;
+      margin: 30px;
+      margin-bottom: 0;
+    }
   }
+
   &_img {
     width: 500px;
     height: 500px;
     border-radius: 30px;
     cursor: auto;
+
+    @media (max-width: 1500px) {
+      width: 350px;
+      height: 350px;
+    }
+
+    @media (max-width: 1000px) {
+      align-self: center;
+      width: 250px;
+      height: 250px;
+    }
   }
+
   &_receipt {
     margin: 0 50px;
+
+    @media (max-width: 700px) {
+      font-size: 14px;
+    }
   }
+
   &_title {
     margin-bottom: 10px;
   }
+
   &_info {
     margin-bottom: 20px;
     font-size: 18px;
+
+    @media (max-width: 700px) {
+      font-size: 16px;
+      list-style-type: none;
+    }
   }
+
   &_instruction {
     font-size: 18px;
   }
+
   &_addToFavourite {
     color: white;
     margin-top: 10px;
     font-size: 30px;
     padding: 5px 10px;
-    background-color: #444444;
+    background-color: #444;
     border: 1px solid white;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.15s all;
+
+    @media (max-width: 1000px) {
+      font-size: 18px;
+    }
+
     &:hover {
-      color: rgba(255, 255, 255, 0.623);
+      color: rgb(255 255 255 / 62.3%);
       background-color: #747474;
-      border-color: rgba(255, 255, 255, 0.623);
+      border-color: rgb(255 255 255 / 62.3%);
     }
   }
 }

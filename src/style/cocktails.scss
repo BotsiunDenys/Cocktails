@@ -1,28 +1,34 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Ubuntu&display=swap";
+
 .cocktails-page {
   min-height: 100vh;
   color: white;
   background-color: #2e2e39;
+
   &_header {
     background-color: #686a77;
     text-align: center;
     font-size: 40px;
-    font-family: "Lobster", "Ubuntu", sans-serif;
+    font-family: Lobster, Ubuntu, sans-serif;
     padding: 50px;
   }
+
   &_headerSection {
     display: flex;
     justify-content: space-between;
     padding: 10px 30px;
   }
+
   &_goHomeBtn {
     color: white;
     font-size: 30px;
     transition: 0.15s all;
+
     &:hover {
-      color: rgba(255, 255, 255, 0.521);
+      color: rgb(255 255 255 / 52.1%);
     }
   }
+
   &_showFavouriteOverlay {
     display: inline-block;
     border-radius: 5px;
@@ -31,23 +37,28 @@
     cursor: pointer;
     color: white;
     transition: 0.15s all;
+
     &:hover {
-      color: rgba(255, 255, 255, 0.623);
+      color: rgb(255 255 255 / 62.3%);
     }
   }
+
   &_main {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 30px;
   }
+
   &_params {
     margin-bottom: 30px;
   }
+
   &_selectTitle {
     font-size: 20px;
     margin-right: 10px;
   }
+
   &_select {
     padding: 5px;
     font-size: 14px;
@@ -55,53 +66,99 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
   &_input {
     margin: 0 10px;
     padding: 5px 10px;
     outline: none;
     font-size: 20px;
     border-radius: 5px;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 14px;
+    }
   }
+
   &_searchBtn {
     padding: 8px 10px;
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
     color: white;
-    background-color: #444444;
+    background-color: #444;
     border: 1px solid white;
     transition: 0.15s all;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 14px;
+    }
+
     &:hover {
-      color: rgba(255, 255, 255, 0.623);
+      color: rgb(255 255 255 / 62.3%);
       background-color: #747474;
-      border-color: rgba(255, 255, 255, 0.623);
+      border-color: rgb(255 255 255 / 62.3%);
     }
   }
+
   &_Title {
     font-size: 30px;
     text-align: center;
     margin: 10px 0;
+
+    @media (max-width: 500px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 20px;
+    }
   }
+
   &_Items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin: 0 300px;
+
+    @media (max-width: 1500px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
   }
+
   &_loading {
     text-align: center;
     padding: 50px;
   }
+
   &_error {
     text-align: center;
     padding: 50px;
   }
+
   &_randomItems {
     display: flex;
     justify-content: space-between;
     width: 150px;
     margin: 10px;
   }
+
   &_searchRandom {
     position: relative;
     display: inline-block;
@@ -112,15 +169,25 @@
     font-weight: bolder;
     cursor: pointer;
     color: white;
-    background-color: #444444;
+    background-color: #444;
     border: 1px solid white;
     transition: 0.15s all;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 14px;
+    }
   }
+
   &_searchRandom:hover {
-    color: rgba(255, 255, 255, 0.623);
+    color: rgb(255 255 255 / 62.3%);
     background-color: #747474;
-    border-color: rgba(255, 255, 255, 0.623);
+    border-color: rgb(255 255 255 / 62.3%);
   }
+
   &_searchRandom &_searchRandomText {
     visibility: hidden;
     width: 120px;
@@ -138,6 +205,7 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
+
   &_searchRandom &_searchRandomText::after {
     content: "";
     position: absolute;
@@ -146,8 +214,9 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: #555 transparent transparent;
   }
+
   &_searchRandom:hover &_searchRandomText {
     visibility: visible;
     opacity: 1;

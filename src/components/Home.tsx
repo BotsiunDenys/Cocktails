@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div className="home">
       <div className="home_title">
-        <h1 className="home_title_text">Drink passion</h1>
+        <h1 className="home_title_text">Dringgle</h1>
         <p className="home_title_desc">
           Service for searching an alcoholic cocktails
         </p>
